@@ -1,0 +1,79 @@
+# Green text, time, and date; windows in blue:
+#hardstatus alwayslastline "%{=b}%{G} Screen(s): %{b}%w %=%{kG}%C%A  %D, %M/%d/%Y "
+shelltitle "shell"
+
+defscrollback 1024
+
+# Window numbering starts at 1, not 0.
+bind c screen 1
+bind 0 select 10
+
+
+#bind s screen -t anubhav 5 ssh isaac@anubhav -t screen -d -R -S  /bin/bash
+
+select 1
+
+# bindkey -k ^, prev
+# bindkey -k ^. next
+
+autodetach      on
+
+# pgup pgdown
+termcapinfo xterm*|rxvt* 'ti@:te@'
+
+#
+# Run a screensaver if there's nothing happening for a while.
+#
+#idle 420 eval "screen cmatrix -f -o -u 10" "idle 0"
+
+
+#activity "%c activity -> %n%f %t"
+activity "%C -> %n%f %t activity!"
+
+# Having this command in your .screenrc would bind the key sequence
+# C-a R' to the `su' command and give it an auto-title name of `root:'.
+
+bind R screen -t '% |root:' sudo fish
+
+bind K kill
+
+msgwait 15
+
+# termcap stuff
+termcapinfo xterm     ti@:te@
+# make the cursor show up in red:
+termcapinfo linux "ve=\E[?25h\E[?17;0;64c"
+
+bind = resize =
+bind + resize +1
+bind - resize -1
+
+
+screen -t sh 1 bash
+#screen -t  Shell1 2 bash -rcfile ~/.messagingrc
+screen -t sh 2 bash
+screen -t sh 3 bash
+
+#status bar line
+#caption always " | %-w%{= BW}%50>%n %t%{-}%+w |%<"
+caption always "%{= kG} | %-w%{= kW}%50>%n %t%{= kG}%+w |%<"
+bindkey ^[[1;2D prev
+bindkey ^[[1;2C next
+
+bindkey "^B" eval split "focus bottom" "screen /home/ike/sys/term/showman"
+
+
+# altscreen on
+#  hardstatus on
+#  hardstatus alwayslastline
+#  hardstatus string "%= %3n %t%? [%h]%? %="
+#  caption always
+#  caption string "%= %-w%L>%{= BW}%n*%t%{-}%52<%+w %L="
+
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# erase background with current bg color
+defbce "on"
+# set TERM
+#term screen-256color-bce
