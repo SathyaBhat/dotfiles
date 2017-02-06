@@ -84,4 +84,5 @@ export LC_ALL=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+export TERM=xterm-256color
 eval $(thefuck --alias)
