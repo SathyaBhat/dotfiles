@@ -100,3 +100,4 @@ fi
 #fi
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+export PS1="\[$(tput setaf 3)$(tput smso)\][\u@\h \w] => sathya\n\[$(tput sgr0)$(tput setaf 3)\]\$ \[$(tput sgr0)\]"
